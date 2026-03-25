@@ -4,6 +4,7 @@ import { Stats } from "@/components/Stats";
 import { Problem } from "@/components/Problem";
 import { Architecture } from "@/components/Architecture";
 import { Capabilities } from "@/components/Capabilities";
+import { McpTools } from "@/components/McpTools";
 import { Results } from "@/components/Results";
 import { Team } from "@/components/Team";
 import { Footer } from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <Problem />
       <Architecture />
       <Capabilities />
+      <McpTools />
       <Results />
       <Team />
       <Footer />
