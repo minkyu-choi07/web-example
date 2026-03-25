@@ -332,3 +332,7 @@ body {
   border-color: var(--clr-violet);
   color: var(--clr-violet);
 }
+
+/* Hide scrollbar for MCP card scroller */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
