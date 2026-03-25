@@ -18,6 +18,8 @@
   --clr-warning-dim: rgba(255, 107, 61, 0.12);
   --clr-blue: #4d8eff;
   --clr-blue-dim: rgba(77, 142, 255, 0.1);
+  --clr-violet: #a78bfa;
+  --clr-violet-dim: rgba(167, 139, 250, 0.1);
   --font-display: 'Chakra Petch', sans-serif;
   --font-mono: 'Source Code Pro', monospace;
 }
@@ -237,4 +239,96 @@ body {
   text-transform: uppercase;
   color: var(--clr-accent);
   opacity: 0.8;
+}
+
+/* Scenario Generation Card */
+@keyframes tracePath {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes nodeAppear {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 2px currentColor); }
+  50% { filter: drop-shadow(0 0 8px currentColor); }
+}
+@keyframes scanBeam {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateX(400%); opacity: 0; }
+}
+
+.scenario-tree-path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: tracePath 1.8s ease-out forwards;
+}
+.scenario-tree-path-d1 { animation-delay: 0.3s; }
+.scenario-tree-path-d2 { animation-delay: 0.5s; }
+.scenario-tree-path-d3 { animation-delay: 0.7s; }
+.scenario-tree-path-d4 { animation-delay: 0.9s; }
+.scenario-tree-path-d5 { animation-delay: 1.1s; }
+
+.scenario-node {
+  transform: scale(0);
+  opacity: 0;
+  animation: nodeAppear 0.5s ease-out forwards;
+}
+.scenario-node-d1 { animation-delay: 0.8s; }
+.scenario-node-d2 { animation-delay: 1.0s; }
+.scenario-node-d3 { animation-delay: 1.2s; }
+.scenario-node-d4 { animation-delay: 1.4s; }
+.scenario-node-d5 { animation-delay: 1.6s; }
+.scenario-node-d6 { animation-delay: 1.8s; }
+.scenario-node-d7 { animation-delay: 2.0s; }
+
+.scenario-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.scenario-card {
+  position: relative;
+  overflow: hidden;
+}
+.scenario-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-violet), transparent);
+  opacity: 0.4;
+}
+.scenario-card .scan-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.03), transparent);
+  animation: scanBeam 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.scenario-param-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+  color: var(--clr-text-dim);
+  transition: all 0.3s ease;
+}
+.scenario-param-tag:hover {
+  border-color: var(--clr-violet);
+  color: var(--clr-violet);
 }
